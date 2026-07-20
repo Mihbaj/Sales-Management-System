@@ -1,4 +1,5 @@
 package BST;
+import Product.Product;
 
 public class Tree {
     private Node root;
@@ -28,10 +29,10 @@ public class Tree {
         } 
         return current;
     }
-    public void insert(int id,double dd){
+    public void insert(int id,Product productObj){
         Node newNode = new Node();
         newNode.key = id;
-        // here we must give the object
+        newNode.product= productObj;
 
         if(root == null){
             root = newNode;
