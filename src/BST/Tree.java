@@ -30,9 +30,12 @@ public class Tree {
         return current;
     }
     public void insert(int id,Product productObj){
-        Node newNode = new Node();
-        newNode.key = id;
+        Node newNode = new Node(id,productObj);
+       /* newNode.key = id;
         newNode.product= productObj;
+        */
+
+        
 
         if(root == null){
             root = newNode;
