@@ -61,5 +61,101 @@ public class Tree {
         }
 
     }
+    public boolean delete (int key){
+        Node current = root;
+        Node parent = root;
+        boolean isLeftChild = true;
+
+        while (current.key != key){
+            parent = current;
+            if(key<current.key){
+                isLeftChild = true;
+                current = current.leftChild;
+            }
+            else{
+                isLeftChild = false;
+                current = current.rightChild;
+            }
+            if(current == null){
+                return false;
+            }
+        }
+
+        if(current == null){
+            return false;
+        }
+
+        if(current.leftChild == null && current.rightChild == null){
+            if(current == root){
+                root = null;
+            }
+            else if(isLeftChild) {
+                parent.leftChild = null;
+            }
+            else{
+                parent.rightChild = null;
+
+            }
+        }
+        else if(current.rightChild == null){
+            if(current == root){
+                root = current.leftChild;
+            }
+            else if(isLeftChild){
+                parent.leftChild = current.leftChild;
+            }
+            else{
+                parent.rightChild = current.leftChild;
+            }
+        }
+        else if(current.leftChild==null){
+            if(current== root){
+                root = current.rightChild;
+            }
+            else if(isLeftChild){
+                parent.leftChild = current.rightChild;
+            }
+            else {
+                parent.rightChild = current.rightChild;
+            }
+        
+        }
+        else {
+            Node successor = getSuccessor(current);
+
+            if(current == root){
+                root = successor;
+            }
+            else if( isLeftChild){
+                parent.leftChild = successor;
+            }
+            else{
+                parent.rightChild = successor;
+            }
+            successor.leftChild = current.leftChild;
+        }
+        return true;
+    }
+
+    private Node getSuccessor(Node deleteNode){
+        Node successorParent = deleteNode;
+        Node successor = deleteNode;
+
+        Node current = deleteNode.rightChild;
+
+        while (current != null){
+            successorParent = successor;
+            successor  = current;
+
+            current = current.leftChild;
+        }
+        if (successor != deleteNode.rightChild){
+            successorParent.leftChild= successor.rightChild;
+
+            successor.rightChild = deleteNode.rightChild;
+        }
+        return successor;
+
+    }
     
 }
