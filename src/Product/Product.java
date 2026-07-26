@@ -20,7 +20,15 @@ public class Product {
 
 
     }
+    public int getId(){
+        return productId;
+    }
     // set getter and setter
+
+    @Override 
+    public String toString(){
+        return productId+","+name+","+sellingPrice+","+costPrice+","+quantity+","+reorderLevel;
+    }
 
 
     

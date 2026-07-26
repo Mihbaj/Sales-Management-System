@@ -17,6 +17,12 @@ public class Employee {
         this.address = address;
     
     }
+    public int getId(){
+        return employeeId;
+    }
+    public String getEmail(){
+        return email;
+    }
 
     // create setter and getter method if they are needed
 
@@ -26,6 +32,11 @@ public class Employee {
         System.out.println("Phone Number:"+phoneNumber);
         System.out.println("Email:"+email);
         System.out.println("Address:"+address);
+    }
+
+    @Override
+    public String toString(){
+        return name+","+employeeId+","+role+","+phoneNumber+","+email+","+address;
     }
     
 }
