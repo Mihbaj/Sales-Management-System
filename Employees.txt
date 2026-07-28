@@ -1,3 +1,2 @@
-Mihbaj,44,CEO,036483,mihbaj10@gmail.com,anurathapura
-Ilham,33,manager,937475,shgo,Ambara
-mihab,55,slhs,0iw7,dko,aoih
+Ismail,78,casiar,0987363,ismaol@gmail.com,Anurathapura
+Minhaj,12,CEO,0764612619,mihabj10@gmail.com,Anurathapura

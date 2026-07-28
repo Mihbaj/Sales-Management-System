@@ -27,7 +27,9 @@ public class Main {
 
                 Double choice1= scanner.nextDouble();
                 if(choice1==2.1){
-                    System.out.println("1 Add Employee");
+                    System.out.println("1.Add Employee");
+                    System.out.println("2.Delete Employee");
+                    System.out.println("3.Update Employee");
                     System.out.println("Enter the Number:");
 
 
@@ -36,12 +38,12 @@ public class Main {
                         
                         manager.addEmployee();
                        
-
-
-
-
-
-
+                    }
+                    else if(choiceEmployee == 2){
+                        manager.deleteEmployee();
+                    }
+                    else if(choiceEmployee == 3){
+                        manager.updateEmployee();
 
                     }
 

@@ -1,3 +1,4 @@
+package Stack;
 class StackX {
     private int maxSize;
     private double[] stackArray;

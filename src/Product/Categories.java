@@ -1,3 +1,4 @@
+package Product;
 public class Categories{
     String[] categories = new String[10];
     
