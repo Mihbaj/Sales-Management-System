@@ -12,7 +12,7 @@ public class ProductManager {
 
 
     Scanner sc = new Scanner(System.in);
-    Tree tree = new Tree();
+    static Tree tree = new Tree();
 
     public ProductManager(){
         productRead();
@@ -34,7 +34,7 @@ public class ProductManager {
         System.out.println("Cost Price: ");
         double costPrice = sc.nextDouble();
         System.out.println("Quantity: ");
-        int quantity = sc.nextInt();
+        double quantity = sc.nextInt();
         System.out.println("Reorder Level: ");
         int reorderLevel = sc.nextInt();
 
@@ -73,10 +73,12 @@ public class ProductManager {
             e.printStackTrace();
 
         }
+
+        
         //Node node = new Node(productId,product);
         // Node node = new Node(product.productID,produtct) product.productID is error why?
         
-        tree.insert(productId,product);
+        tree.insert(product.getId(),product);
 
 
         
@@ -92,6 +94,8 @@ public class ProductManager {
                 String[] data = line.split(",");
                 Product product = new Product(Integer.parseInt(data[0]),data[1],Double.parseDouble(data[2]),Double.parseDouble(data[3]),Integer.parseInt(data[4]),Integer.parseInt(data[5]));
                 productIds.add(product.getId());
+                 tree.insert(product.getId(),product);
+
             }
 
 
@@ -111,6 +115,20 @@ public class ProductManager {
 
 
 
+    }
+    public boolean searchProduct(int id){
+        ProductNode node = tree.find(id);
+        if(node==null){
+            return false;
+        }
+        else{
+            return true;
+        }
+
+    }
+    public Product getProduct(int id){
+        return tree.find(id).product;
+        // Note this one because i did not use if else 
     }
     
 }

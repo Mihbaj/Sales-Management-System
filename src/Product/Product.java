@@ -6,11 +6,11 @@ public class Product {
     // add category
     private double sellingPrice;
     private double costPrice;
-    private int quantity;
+    private double quantity;
     private int reorderLevel;
     //add sublierId
 
-    public Product(int productId,String name, double sellingPrice, double costPrice,int quantity,int reorderLevel){
+    public Product(int productId,String name, double sellingPrice, double costPrice,double quantity,int reorderLevel){
         this.productId = productId;
         this.name = name;
         this.sellingPrice = sellingPrice;

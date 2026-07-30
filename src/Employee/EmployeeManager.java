@@ -22,7 +22,7 @@ public class EmployeeManager {
      static Scanner scanner = new Scanner(System.in);
 
     public void addEmployee(){
-       
+        
         System.out.println("Name:");
         String name =scanner.nextLine();
         System.out.println("ID:");
@@ -37,47 +37,73 @@ public class EmployeeManager {
         System.out.println("Address:");
         String address = scanner.nextLine();
 
-        boolean isIdAvailable = id.contains(emid);
-        boolean isEmailAvailable = email.contains(emEmail);
+        
+        boolean available = true;
 
         
-        
-        while(isIdAvailable){
-            System.out.println("This ID has been assigned already!");
-            System.out.println("1.Re Enter Id");
-            System.out.println("2.Exit");
-            int i = scanner.nextInt();
-            if(i == 1){
-                System.out.println("ID:");
-                emid = scanner.nextInt();
-                isIdAvailable = id.contains(emid);
+        // when i give used id and email to a employee, i could change only Id 
+        while(available){
+            boolean isIdAvailable = id.contains(emid);
+            boolean isEmailAvailable = email.contains(emEmail);
+            if(isIdAvailable){
+                while(isIdAvailable){
+                    System.out.println("This ID has been assigned already!");
+                    System.out.println("1.Re Enter Id");
+                    System.out.println("2.Exit");
+                    int i = scanner.nextInt();
+                    if(i == 1){
+                        System.out.println("ID:");
+                        emid = scanner.nextInt();
+                        scanner.nextLine();
+                        isIdAvailable = id.contains(emid);
+                        if(isIdAvailable==false){
+                            available =false;
+                        }
+
+                    }
+                    else{
+                        return;
+                    }
+                }
+
 
             }
             else{
-                return;
+                available = false;
             }
+            if(isEmailAvailable){
+                while(isEmailAvailable){
+                    System.out.println("This  Email has been assigned already!");
+                    System.out.println("1.Re Enter Email");
+                    System.out.println("2.Exit");
+                    int i = scanner.nextInt();
+                    if(i==1){
+                        System.out.println("Email:");
+                        scanner.nextLine();
+                        emEmail = scanner.nextLine();
+                        isEmailAvailable = email.contains(emEmail);
+                        if(isEmailAvailable == false){
+                            available = false;
+                        }
+
+                    }
+                    else{
+                        return;
+                    } 
+
+                } 
+
+            }
+            else{
+                available = false;
+            }
+                 
 
         }
+        
     
         
-        while(isEmailAvailable){
-
-            System.out.println("This  Email has been assigned already!");
-            System.out.println("1.Re Enter Email");
-            System.out.println("2.Exit");
-            int i = scanner.nextInt();
-            if(i==1){
-                System.out.println("Email:");
-                scanner.nextLine();
-                emEmail = scanner.nextLine();
-                isEmailAvailable = email.contains(emEmail);
-
-            }
-            else{
-                return;
-            }
-
-        } 
+        
         
         Employee employee = new Employee(emid,name,role,phoneNumber,emEmail,address);
         

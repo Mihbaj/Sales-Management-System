@@ -9,6 +9,8 @@ public class Main {
 
     
         Scanner scanner = new Scanner(System.in);
+        EmployeeManager manager = new EmployeeManager();
+        ProductManager manage= new ProductManager();
         while(true){
             System.out.println("------SAMA STORE-----");
             System.out.println("---------------------------");
@@ -21,7 +23,7 @@ public class Main {
             int choice = scanner.nextInt();
 
             if(choice==2){
-                EmployeeManager manager = new EmployeeManager();
+                
                 System.out.println("2.1 Employee");
                 System.out.println("2.2 User");
 
@@ -51,7 +53,7 @@ public class Main {
                 }
             }
             else if(choice == 3){
-                ProductManager manager = new ProductManager();
+             
                 System.out.println("-------Products-------");
                 System.out.println("1.Add Product");
 
@@ -59,7 +61,7 @@ public class Main {
                 int i = scanner.nextInt();
                 
                 if(i==1){
-                    manager.addProduct();
+                    manage.addProduct();
                 }
             }
 

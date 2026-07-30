@@ -1,19 +1,23 @@
 package Item;
+import Product.*;
 
 public class Item {
-    private int itemId;
-    private String name;
+    private int itemId =0;
+    private Product product;
     private double quntity;
+    private int nItem=1;
 
-    public Item(int itemId, String name,double quntity){
-        this.itemId = itemId;
-        this.name = name;
+    public Item( Product product,double quntity){
+        itemId=itemId+nItem;
+        this.product = product;
         this.quntity = quntity;
+        nItem+=1;
+        // i want to create a txt file for nItem and update the number - i think don't need
 
     }
     public void displyItem(){
         System.out.println("Item Id:"+itemId);
-        System.out.println("Name:"+name);
+       
         System.out.println("Quntity:"+quntity);
 
     }
