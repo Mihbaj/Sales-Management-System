@@ -23,12 +23,16 @@ public class Product {
     public int getId(){
         return productId;
     }
+    public double getSellingPrice(){
+        return sellingPrice;
+    }
     // set getter and setter
 
     @Override 
     public String toString(){
         return productId+","+name+","+sellingPrice+","+costPrice+","+quantity+","+reorderLevel;
     }
+    
 
 
     

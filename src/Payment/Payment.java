@@ -1,7 +1,7 @@
 package Payment;
 import java.util.Scanner;
 import Item.*;
-import Invoice.*;
+import InvoiceSystem.*;
 
 public class Payment {
     private int paymentId;
@@ -11,6 +11,13 @@ public class Payment {
     private String paymentStatus;
     private String[] paymentMethodsArray = {"Cash","Card","BankTransfer"};
     private String[] paymentStatusArray = {"Paid","Pending","Partially Paid"};
+
+    public String getMethod(){
+        return paymentMethod;
+    }
+    public String getStatus(){
+        return paymentStatus;
+    }
 
     Scanner scanner = new Scanner(System.in);
 
