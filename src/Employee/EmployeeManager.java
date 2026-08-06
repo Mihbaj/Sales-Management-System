@@ -38,73 +38,54 @@ public class EmployeeManager {
         String address = scanner.nextLine();
 
         
-        boolean available = true;
+        boolean available;
 
         
         // when i give used id and email to a employee, i could change only Id 
-        while(available){
-            boolean isIdAvailable = id.contains(emid);
-            boolean isEmailAvailable = email.contains(emEmail);
-            if(isIdAvailable){
-                while(isIdAvailable){
-                    System.out.println("This ID has been assigned already!");
-                    System.out.println("1.Re Enter Id");
-                    System.out.println("2.Exit");
-                    int i = scanner.nextInt();
-                    if(i == 1){
-                        System.out.println("ID:");
-                        emid = scanner.nextInt();
-                        scanner.nextLine();
-                        isIdAvailable = id.contains(emid);
-                        if(isIdAvailable==false){
-                            available =false;
-                        }
-
-                    }
-                    else{
-                        return;
-                    }
+       
+        boolean isIdAvailable = id.contains(emid);
+        boolean isEmailAvailable= email.contains(emEmail);
+        
+        while(isIdAvailable||isEmailAvailable){ 
+            while(isIdAvailable){
+                System.out.println("This ID has been assigned already!");
+                System.out.println("1.Re Enter the Id");
+                System.out.println("2.Exit");
+                int i = scanner.nextInt();
+                if(i==1){
+                    System.out.println("ID:");
+                    emid = scanner.nextInt();
+                    scanner.nextLine();
+                    isIdAvailable = id.contains(emid);
+                    
                 }
-
-
-            }
-            else{
-                available = false;
-            }
-            if(isEmailAvailable){
-                while(isEmailAvailable){
-                    System.out.println("This  Email has been assigned already!");
-                    System.out.println("1.Re Enter Email");
-                    System.out.println("2.Exit");
-                    int i = scanner.nextInt();
-                    if(i==1){
-                        System.out.println("Email:");
-                        scanner.nextLine();
-                        emEmail = scanner.nextLine();
-                        isEmailAvailable = email.contains(emEmail);
-                        if(isEmailAvailable == false){
-                            available = false;
-                        }
-
-                    }
-                    else{
-                        return;
-                    } 
-
-                } 
+                else{
+                    return;
+                }
+                
+                    
+                    
+                    
 
             }
-            else{
-                available = false;
+            while(isEmailAvailable){
+                System.out.println("This Email has been assigned already!");
+                System.out.println("1.Re Enter Email");
+                System.out.println("Exit");
+                int i = scanner.nextInt();
+                if(i==1){
+                    System.out.println("Ender the Email:");
+                    scanner.nextLine();
+                    emEmail = scanner.nextLine();
+                    isEmailAvailable = email.contains(emEmail);
+                    
+                }
+                else{
+                    return;
+                }
             }
-                 
-
         }
-        
-    
-        
-        
-        
+                    
         Employee employee = new Employee(emid,name,role,phoneNumber,emEmail,address);
         
         try(FileWriter writer = new FileWriter("Employees.txt",true)){
@@ -454,6 +435,10 @@ public class EmployeeManager {
             String line = employee.toString();
         }
     } */
+
+    public boolean searchEmployeeFromList(int id){
+        return employeeList.contains(id);
+    }
 
     
 

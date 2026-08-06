@@ -17,10 +17,11 @@ public class Item {
         // i want to create a txt file for nItem and update the number - i think don't need
 
     }
-    public void displyItem(){
+    public void displayItem(){
         System.out.println("Item Id:"+itemId);
-       
+        System.out.println("Item Name:"+product.getName()+", product ID:"+product.getId());
         System.out.println("Quntity:"+quntity);
+        System.out.println("Price:"+price);
 
     }
     public double getPrice(){

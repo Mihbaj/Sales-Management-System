@@ -1,5 +1,13 @@
 package Employee;
+import java.util.Scanner;
+import HashTable.*;
+
+
 public class User{
+    Scanner scanner = new Scanner(System.in);
+    HashTable<String,String> userTable = new HashTable<>();
+    EmployeeManager manager = new EmployeeManager();
+    
 
     private String username;
     private String password;
@@ -20,6 +28,55 @@ public class User{
     }
     public String getPassword(){
         return password;
+    }
+
+    public void createUser(int id){ 
+        String userName;
+        String passWord;
+    
+
+        if(manager.searchEmployeeFromList(id)==true){
+            
+           do{
+            System.out.println("Enter the user name:");
+            userName = scanner.nextLine();
+            if(userTable.search(userName)!= null){
+                System.out.println("This user name used already!");
+                System.out.println("Do you want to continue(yes/no):");
+                String ans = scanner.nextLine();
+                if(ans.equalsIgnoreCase("no")){
+                    return;
+                }
+            }
+
+           }
+           while(userTable.search(userName)!=null);
+
+           System.out.println("Enter the pasword:");
+           passWord = scanner.nextLine();
+           
+           userTable.insert(userName,passWord);
+
+
+           
+
+
+            
+            
+        }
+        else{
+            System.out.println("This id not found!");
+
+        }
+       
+        
+
+
+        //User user = userTable.search(newUser);
+
+        
+
+
     }
 
     

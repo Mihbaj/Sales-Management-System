@@ -26,6 +26,9 @@ public class Product {
     public double getSellingPrice(){
         return sellingPrice;
     }
+    public String getName(){
+        return name;
+    }
     // set getter and setter
 
     @Override 

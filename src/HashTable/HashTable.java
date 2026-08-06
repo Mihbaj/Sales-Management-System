@@ -24,11 +24,11 @@ public class HashTable<K,V> {
     }
     public void insert(K key, V value){
         if (key== null || value == null){
-            System.out.println("Product cannot be null.");
+            System.out.println("Object can't be null");
             return;
         }
         if (search(key) != null){
-            System.out.println("Product ID " + key + " already exists.");
+            System.out.println("This is already  exit");
             return;
         }
         double currentLoadFactor = (double) elementCount/table.length;
@@ -45,7 +45,7 @@ public class HashTable<K,V> {
         table[index] = newNode;
         elementCount++;
 
-        System.out.println("Product inserted successfully.");
+       
     }
 
     public V search(K key){
@@ -156,7 +156,7 @@ public class HashTable<K,V> {
             }
 
         }
-        System.out.println("Hash table resized to " + table.length + " buckets.");
+       
 
     }
 }
