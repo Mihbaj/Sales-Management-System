@@ -28,7 +28,7 @@ public class HashTable<K,V> {
             return;
         }
         if (search(key) != null){
-            System.out.println("This is already  exit");
+            
             return;
         }
         double currentLoadFactor = (double) elementCount/table.length;

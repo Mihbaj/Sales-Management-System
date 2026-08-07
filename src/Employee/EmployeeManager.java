@@ -14,9 +14,14 @@ public class EmployeeManager {
     static File file = new File("Employees.txt");
     static File tem = new File("Temperary.txt");
 
-    public EmployeeManager(){
-        employeeReader();
+    boolean fileload = true;
 
+    public EmployeeManager(){
+        if (fileload){
+            employeeReader();
+            fileload = false;
+        }
+        
 
     }
      static Scanner scanner = new Scanner(System.in);

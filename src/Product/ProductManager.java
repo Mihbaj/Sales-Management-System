@@ -33,10 +33,7 @@ public class ProductManager {
         double sellingPrice = sc.nextDouble();
         System.out.println("Cost Price: ");
         double costPrice = sc.nextDouble();
-        System.out.println("Quantity: ");
-        double quantity = sc.nextInt();
-        System.out.println("Reorder Level: ");
-        int reorderLevel = sc.nextInt();
+       
 
         boolean isIdUsed = productIds.contains(productId);
 
@@ -59,7 +56,7 @@ public class ProductManager {
             
         }
 
-        Product product = new Product(productId,name,sellingPrice,costPrice,quantity,reorderLevel);
+        Product product = new Product(productId,name,sellingPrice,costPrice);
 
         try(FileWriter writer = new FileWriter("products.txt",true)){
             writer.write(product.toString());
@@ -92,7 +89,7 @@ public class ProductManager {
             while(reader.hasNextLine()){
                 String line = reader.nextLine();
                 String[] data = line.split(",");
-                Product product = new Product(Integer.parseInt(data[0]),data[1],Double.parseDouble(data[2]),Double.parseDouble(data[3]),Integer.parseInt(data[4]),Integer.parseInt(data[5]));
+                Product product = new Product(Integer.parseInt(data[0]),data[1],Double.parseDouble(data[2]),Double.parseDouble(data[3]));
                 productIds.add(product.getId());
                  tree.insert(product.getId(),product);
 
@@ -129,6 +126,11 @@ public class ProductManager {
     public Product getProduct(int id){
         return tree.find(id).product;
         // Note this one because i did not use if else 
+    }
+
+    public void updateQuantity(double quantity){
+        
+
     }
     
 }

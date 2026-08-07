@@ -1,10 +1,35 @@
 package Sales;
- 
+import java.util.ArrayList;
+import Item.*;
+import FileHandaling.*;
+import AVL.*;
+import java.time.LocalDate;
+
 
 
 public class SalesManager {
+    SalesFiles manager = new SalesFiles();
+    static public AVLTree tree = new AVLTree();
+    
 
-    public void addSale(){
+    private static boolean fileload = true;
+
+    public SalesManager(){
+        if(fileload){
+            manager.reader();
+            fileload = false;
+
+        }
+
+    }
+
+    public void createSale(String id,String method,String status,LocalDate date,ArrayList<SaleItem> list){
+        Sales sale = new Sales(id,method,status,date,list);
+     
+        manager.write(sale);
+        tree.insert(sale.getTreeId(),sale);
+        
+
         
     }
 

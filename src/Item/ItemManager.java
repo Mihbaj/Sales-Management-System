@@ -3,10 +3,13 @@ import Product.*;
 import java.util.Scanner;
 
 public class ItemManager {
+    
 
     Scanner scanner = new Scanner(System.in);
     ProductManager manager = new ProductManager();
+
     public Item createItem(){
+       
         System.out.println("Ender the Product ID:");
         int id = scanner.nextInt();
         scanner.nextLine();
@@ -20,6 +23,7 @@ public class ItemManager {
                 System.out.println("Re enter the product id:");
                 id = scanner.nextInt();
                 checkIsAvailable = manager.searchProduct(id);
+                
                 
 
             }

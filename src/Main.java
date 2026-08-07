@@ -1,6 +1,7 @@
 import Product.*;
 import java.util.Scanner;
 import Employee.*;
+import InvoiceSystem.*;
 
 public class Main {
     public static void main(String[] args){
@@ -11,13 +12,15 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         EmployeeManager manager = new EmployeeManager();
         ProductManager manage= new ProductManager();
+        InvoiceManager inManager = new InvoiceManager();
         while(true){
             System.out.println("------SAMA STORE-----");
             System.out.println("---------------------------");
             System.out.println("1.Customer");
             System.out.println("2.Employee");
             System.out.println("3.Products");
-            System.out.println("4.Exit");
+            System.out.println("4.Ivoice:");
+            System.out.println("5.Exit");
             
             System.out.println("Enter the Numbr:");
             int choice = scanner.nextInt();
@@ -32,7 +35,9 @@ public class Main {
                     System.out.println("1.Add Employee");
                     System.out.println("2.Delete Employee");
                     System.out.println("3.Update Employee");
+                    
                     System.out.println("Enter the Number:");
+                    
 
 
                     int choiceEmployee = scanner.nextInt();
@@ -63,6 +68,10 @@ public class Main {
                 if(i==1){
                     manage.addProduct();
                 }
+            }
+            else if(choice == 4){
+                System.out.println("-------Ivoice------------");
+                inManager.createInvoice();
             }
 
         }

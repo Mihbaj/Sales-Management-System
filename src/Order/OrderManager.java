@@ -5,6 +5,7 @@ import java.util.Scanner;
 import java.util.HashSet;
 
 public class OrderManager {
+    
     ItemManager manager = new ItemManager();
     Queue<Order> queue = new Queue<>();
     HashSet<Integer> userSet = new HashSet<>();
