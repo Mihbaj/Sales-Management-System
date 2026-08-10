@@ -5,17 +5,16 @@ import HashTable.*;
 
 public class User{
     Scanner scanner = new Scanner(System.in);
-    HashTable<String,String> userTable = new HashTable<>();
+    public static HashTable<String,String> userTable = new HashTable<>();
     EmployeeManager manager = new EmployeeManager();
     
 
     private String username;
     private String password;
+    private int employeeId;
+    
 
-    public User(String username,String password){
-        this.username=username;
-        this.password=password;
-    }
+    
 
     public void setUserName(String username){
         this.username = username;
@@ -29,6 +28,12 @@ public class User{
     public String getPassword(){
         return password;
     }
+    @Override
+    public String toString(){
+        return username+","+password;
+
+    }
+    /* 
 
     public void createUser(int id){ 
         String userName;
@@ -77,7 +82,7 @@ public class User{
         
 
 
-    }
+    }*/
 
     
 

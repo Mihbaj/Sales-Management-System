@@ -54,10 +54,7 @@ public class Invoice{
         System.out.println("Totol Amound:"+totalAmount);
 
     }
-    public ArrayList<SaleItem> getSaleItemList(){
-        
-
-    }
+  
 
 
 

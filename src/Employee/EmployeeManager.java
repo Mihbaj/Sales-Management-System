@@ -3,14 +3,15 @@ import java.util.Scanner;
 import java.io.*;
 import java.io.File;
 import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.Iterator;
+
+
+import LinkList.*;
 
 
 public class EmployeeManager {
     static HashSet<Integer> id = new HashSet<>();
     static HashSet<String> email = new HashSet<>();
-    static LinkedList<Employee> employeeList = new LinkedList<>();
+    static LinkList<Employee> employeeList = new LinkList<>();
     static File file = new File("Employees.txt");
     static File tem = new File("Temperary.txt");
 
@@ -145,7 +146,7 @@ public class EmployeeManager {
         boolean isAvailableId = id.contains(deleteId);
         while(!isAvailableId){
             System.out.println("ID is not Founted!");
-            System.out.println("1.REEnter the Id:");
+            System.out.println("1.RE Enter the Id:");
             System.out.println("2.EXit");
             System.out.println("Enter the Number:");
             int i = scanner.nextInt();
@@ -163,7 +164,24 @@ public class EmployeeManager {
 
 
         }
+        LinkNode<Employee> current = employeeList.getFirst();
         
+        for(int i=1;i<=employeeList.length();i++){
+            
+            if(current.getData().getId()==deleteId){
+                employeeList.delete(current.getData());
+                id.remove(deleteId);
+                rewriteFile(deleteId);
+                System.out.println("Delted Succesfully.");
+                return;
+
+            }
+            current = current.getNext();
+        }
+        
+
+       
+        /*  
         boolean remove = false;
         Iterator<Employee> employeeIterator = employeeList.iterator();
         while(employeeIterator.hasNext()){
@@ -180,7 +198,7 @@ public class EmployeeManager {
             rewriteFile(deleteId);
             System.out.println("Delted Succesfully.");
 
-        }
+        } */
        
 
 
@@ -220,7 +238,23 @@ public class EmployeeManager {
                 }
             }
         }
+        LinkNode<Employee> current = employeeList.getFirst();
 
+        for(int i=1;i<=employeeList.length();i++){
+          
+            if(current.getData().getId()==updateId){
+                Employee updateEmployee = current.getData();
+                updateInput(updateEmployee);
+                rewriteFile(updateId);
+                fileWrite(updateEmployee);
+                System.out.println("Uptated succesfully");
+                return;
+
+            }
+            current = current.getNext();
+        }
+
+/* 
         Iterator<Employee> employeeIterator = employeeList.iterator();
         
         while(employeeIterator.hasNext()){
@@ -229,7 +263,7 @@ public class EmployeeManager {
             if(employee.getId()==updateId){
                
                 updateInput(employee);
-                rewriteFile(updateId);
+                rewriteFile(updateId);s
                 fileWrite(file,employee);
                 
                 return;
@@ -237,7 +271,7 @@ public class EmployeeManager {
             }
         }
        
-        
+*/    
    
 
 
@@ -270,7 +304,7 @@ public class EmployeeManager {
 
     }
     public static Employee createEmployeeFromLine(String line){
-        String[] data = line.split(",");
+       String[] data = line.split(",");
        Employee employee = new Employee(Integer.parseInt(data[1]),data[0],data[2],data[3],data[4],data[5]);
        return employee;
     }
@@ -296,10 +330,13 @@ public class EmployeeManager {
             System.out.println("Choose the Number you want to change:");
 
             int i = scanner.nextInt();
+            scanner.nextLine();
             if(i==1){
                
                 System.out.println("Ender the new Id:");
                 int newId = scanner.nextInt();
+                scanner.nextLine();
+               
                 boolean isAvailableId=id.contains(newId);
                 while(isAvailableId){
                     System.out.println("This Id is used already!");
@@ -307,9 +344,11 @@ public class EmployeeManager {
                     System.out.println("2.Don't Change");
                     System.out.println("Entet the Number:");
                     i=scanner.nextInt();
+                    scanner.nextLine();
                     if(i==1){
                         System.out.println("Enter the new Id:");
                         newId = scanner.nextInt();
+                        scanner.nextLine();
                         isAvailableId =id.contains(newId);
 
                         
@@ -326,15 +365,16 @@ public class EmployeeManager {
                     id.add(newId);   
 
                 }
-                scanner.nextLine();
+                
                 whileControlar = chooseReRun();
 
                 
 
             }
             else if(i==2){
+                
                 System.out.println("Enter the new name:");
-                scanner.nextLine();
+                
                 String newName = scanner.nextLine();
                 employee.setName(newName);
                 whileControlar = chooseReRun();
@@ -342,6 +382,7 @@ public class EmployeeManager {
 
             }
             else if(i==3){
+              
                 System.out.println("Enter the new role:");
                 String newRole = scanner.nextLine();
                 employee.setRole(newRole);
@@ -349,6 +390,7 @@ public class EmployeeManager {
             }
 
             else if(i==4){
+              
                 System.out.println("Enter the PhoneNumber:");
                 String newPhoneNumber = scanner.nextLine();
                 employee.setPhoneNumber(newPhoneNumber);
@@ -356,6 +398,7 @@ public class EmployeeManager {
 
             }
             else if(i==5){
+              
             
                 System.out.println("Enter the new Email:");
                 String newEmail = scanner.nextLine();
@@ -366,8 +409,11 @@ public class EmployeeManager {
                     System.out.println("1.RE Enter new Email");
                     System.out.println("2.Don't Change");
                     System.out.println("Enter the number:");
+                    int ans = scanner.nextInt();
+                    scanner.nextLine();
+                   
 
-                    if(i==1){
+                    if(ans==1){
                         System.out.println("Re Enter the new Eamil:");
                         newEmail = scanner.nextLine();
                         isAvailableEmail = email.contains(newEmail);
@@ -389,6 +435,7 @@ public class EmployeeManager {
             
             }
             else if(i==6){
+                
                 System.out.println("Enter the new Address:");
                
                 String newAddress = scanner.nextLine();
@@ -422,7 +469,7 @@ public class EmployeeManager {
 
 
     }
-    public void fileWrite(File file,Employee employee){
+    public void fileWrite(Employee employee){
         try(FileWriter writer = new FileWriter(file,true)){
             writer.write(employee.toString());
             writer.write(System.lineSeparator());
@@ -441,8 +488,30 @@ public class EmployeeManager {
         }
     } */
 
-    public boolean searchEmployeeFromList(int id){
-        return employeeList.contains(id);
+  /*   public boolean searchEmployeeFromList(int id){
+        LinkNode<Employee> current = employeeList.getFirst();
+        for(int i=1;i<=employeeList.length();i++){
+           
+            if(current.getData().getId()==id){
+                return true;
+            }
+            current = current.getNext();
+        }
+        return false;
+        
+        
+    }*/
+    public Employee search(int id){
+        LinkNode<Employee> current = employeeList.getFirst();
+        while(current!=null){
+            if(current.getData().getId()==id){
+                return current.getData();
+                
+
+            }
+            current = current.getNext();
+        }
+        return null;
     }
 
     

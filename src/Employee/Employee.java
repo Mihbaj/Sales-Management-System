@@ -8,6 +8,7 @@ public class Employee {
     private String phoneNumber;
     private String email;
     private String address;
+    private String userName=null;
 
     Scanner scanner = new Scanner(System.in);
 
@@ -18,6 +19,7 @@ public class Employee {
         this.phoneNumber = phoneNumber;
         this.email = email;
         this.address = address;
+        
     
     }
     public void setId(int id){
@@ -44,6 +46,13 @@ public class Employee {
     public String getEmail(){
         return email;
     }
+    public void setUserName(String name){
+        userName = name;
+    }
+    public String getUserName(){
+        return userName;
+
+    }
 
     // create setter and getter method if they are needed
 
@@ -59,6 +68,16 @@ public class Employee {
     @Override
     public String toString(){
         return name+","+employeeId+","+role+","+phoneNumber+","+email+","+address;
+    }
+    @Override 
+    public boolean equals(Object obj){
+        if(!(obj instanceof Employee)){
+            System.out.println("This is not a Employee");
+            return false;
+        }
+        Employee employee = (Employee) obj;
+        return this.employeeId == employee.getId();
+
     }
     
     

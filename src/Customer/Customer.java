@@ -1,5 +1,7 @@
  package Customer;
 
+import Employee.User;
+
 public class Customer {
     private int customerId;
     private String name;
@@ -15,11 +17,13 @@ public class Customer {
         this.address = address;
     }
 
-    public void setCustoemrId(int customerId){
-        this.customerId = customerId;
-    }
-    public  int getCustomerId(){
+    
+    public  int getId(){
         return customerId;
+    }
+    public void setId(int id){
+        customerId = id;
+
     }
     public void setName(String name){
         this.name = name;
@@ -55,5 +59,12 @@ public class Customer {
         System.out.println("Address:"+address);
 
     }
+    @Override
+    public String toString(){
+        return customerId+","+name+","+phoneNumber+","+email+","+address;
+
+    }
+  
+  
     
 }
