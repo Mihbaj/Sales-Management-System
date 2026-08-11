@@ -3,6 +3,7 @@ import java.util.LinkedList;
 import java.time.LocalTime;
 import java.time.LocalDate;
 import Item.*;
+import LinkList.*;
 
 
 public class Order {
@@ -10,12 +11,24 @@ public class Order {
     private LocalTime time = LocalTime.now();
     private LocalDate date = LocalDate.now();   
     private LinkedList<Item> itemList = new LinkedList<>();
-    private int totalOrder;
-    private int balanceOrder;
+    //private int totalOrder;
+    //private int balanceOrder;
+    private String status = "Active";
     
     public Order(){
-        orderId = totalOrder+1;
+        
     }
+    public void setId(int id){
+        orderId = id;
+    }
+    public void setTime(LocalTime time){
+        this.time = time;
+    }
+    public void setDate(LocalDate date){
+        this.date = date;
+    }
+
+    
     public void addItemToList(Item item){
         if(item!=null){
             itemList.add(item);
@@ -26,6 +39,12 @@ public class Order {
     }
     public int getId(){
         return orderId;
+    }
+    public void setStatus(){
+        status ="De Active";
+    }
+    public void setStatus(String status){
+        this.status = status;
     }
     public void displayOrder(){
         System.out.println("Order Id:"+orderId);
@@ -39,6 +58,18 @@ public class Order {
         }
 
 
+    }
+    @Override
+    public String toString(){
+        StringBuilder builder = new StringBuilder();
+        for(int i=0;i<itemList.size();i++){
+            builder.append(itemList.get(i).toString());
+            if(i!=(itemList.size()-1)){
+                builder.append("|");
+            }
+        }
+        String items = builder.toString();
+        return orderId+","+time+","+date+","+status+","+items;
     }
 
 }

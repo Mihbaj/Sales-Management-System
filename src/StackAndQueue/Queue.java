@@ -1,5 +1,6 @@
 package StackAndQueue;
- 
+
+import Order.Order;
 
 public class Queue<T> {
     private Node<T> front;
@@ -11,6 +12,10 @@ public class Queue<T> {
         rear = null;
         size = 0;
     }
+    public Node<T> getFront(){
+        return front;
+    }
+    
     public void insert(T data){
         Node<T> newNode = new Node<>(data);
 
@@ -66,6 +71,8 @@ public class Queue<T> {
         System.out.println("Null");
 
     }
+   
+
 
     
 

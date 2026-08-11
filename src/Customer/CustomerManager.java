@@ -131,7 +131,7 @@ public class CustomerManager {
             int ans;
 
             while(true){
-                System.out.println("Please Enter the new Id :");
+                System.out.println("Please Enter the number :");
                 ans = scanner.nextInt();
                 
                 if(ans<=0 || ans>5){

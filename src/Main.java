@@ -2,6 +2,7 @@ import Product.*;
 import java.util.Scanner;
 import Employee.*;
 import InvoiceSystem.*;
+import Order.*;
 
 
 public class Main {
@@ -9,9 +10,10 @@ public class Main {
     
         Scanner scanner = new Scanner(System.in);
         EmployeeManager manager = new EmployeeManager();
-        ProductManager manage= new ProductManager();
+        ProductManager productmanage= new ProductManager();
         InvoiceManager inManager = new InvoiceManager();
         UserManager userManager = new UserManager();
+        OrderManager orderManager = new OrderManager();
 
         System.out.println("----------Login-----------");
         while(true){
@@ -20,7 +22,7 @@ public class Main {
             if(userManager.search(ans) || userManager.getAdminName().equals(ans)){
                 System.out.println("Enter the password:");
                 String password = scanner.nextLine();
-                if(password==userManager.getPassword(ans) || userManager.getAdminPassword().equals(password)){
+                if(password.equals(userManager.getPassword(ans)) || userManager.getAdminPassword().equals(password)){
                     System.out.println("Permission granted");
                     break;
                 }
@@ -45,6 +47,7 @@ public class Main {
             System.out.println("2.Employee");
             System.out.println("3.Products");
             System.out.println("4.Ivoice:");
+            System.out.println("5.Order");
             System.out.println("5.Exit");
             
             System.out.println("Enter the Numbr:");
@@ -52,11 +55,11 @@ public class Main {
 
             if(choice==2){
                 
-                System.out.println("2 Employee");
-                System.out.println("2 User");
+                System.out.println("1.Employee");
+                System.out.println("2.User");
 
                 Double choice1= scanner.nextDouble();
-                if(choice1==2){
+                if(choice1==1){
                     System.out.println("1.Add Employee");
                     System.out.println("2.Delete Employee");
                     System.out.println("3.Update Employee");
@@ -102,19 +105,55 @@ public class Main {
              
                 System.out.println("-------Products-------");
                 System.out.println("1.Add Product");
-                System.out.println("2.");
+                System.out.println("2.Update Product");
 
                 System.out.println("Enter the Number:");
                 int i = scanner.nextInt();
                 
                 if(i==1){
-                    manage.addProduct();
+                    productmanage.addProduct();
+                }
+                else if(i==2){
+                    productmanage.updateProduct();
                 }
             }
             else if(choice == 4){
                 System.out.println("-------Ivoice------------");
                 inManager.createInvoice();
             }
+            else if (choice ==5){
+                System.out.println("1.Add Order");
+                System.out.println("2.View next Order");
+                System.out.println("3.Cencel Order");
+                System.out.println("4.Delete Order(from Queue)");
+                System.out.println("5.Exit");
+                
+                System.out.println("Enter your choice:");
+                int i =scanner.nextInt();
+
+                if(i==1){
+                    orderManager.createOrder();
+                    
+
+                }
+                else if(i==2){
+                    orderManager.getNextOrder();
+                }
+                else if(i==3){
+                    orderManager.cancelOrder();
+                }
+                else if(i==4){
+                    orderManager.removeOrder();
+                }
+                else if(i==5){
+                    return;
+                }
+                else{
+                    System.out.println("Invalid Input");
+
+                }
+            }
+
 
         }
     }

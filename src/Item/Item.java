@@ -33,7 +33,7 @@ public class Item {
         return itemId;
     }
     public void setId(int nitem){
-        itemId = nitem+1;
+        itemId = nitem;
 
     }
     public String getProductName(){
@@ -42,6 +42,10 @@ public class Item {
     }
     public double getQuntity(){
         return quntity;
+    }
+    @Override
+    public String toString(){
+        return itemId+":"+quntity+":"+product.getId()+":"+product.getName()+":"+product.getSellingPrice()+":"+product.getCostPrice();
     }
     
     

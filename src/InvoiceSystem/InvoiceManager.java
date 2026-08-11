@@ -21,7 +21,7 @@ public class InvoiceManager {
         PaymentManager payment = new PaymentManager();
 
         boolean Boolean = true;
-         int nItem=0;
+         int nItem=1;
          ArrayList<SaleItem> saleList = new ArrayList<>();
         while(Boolean){
             Item newItem = manager.createItem();
