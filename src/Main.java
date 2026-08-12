@@ -3,6 +3,9 @@ import java.util.Scanner;
 import Employee.*;
 import InvoiceSystem.*;
 import Order.*;
+import Sales.*;
+import Payment.PaymentManager;
+import Customer.CustomerManager;
 
 
 public class Main {
@@ -14,6 +17,9 @@ public class Main {
         InvoiceManager inManager = new InvoiceManager();
         UserManager userManager = new UserManager();
         OrderManager orderManager = new OrderManager();
+        SalesManager salemanager = new SalesManager();
+        PaymentManager paymentmanager = new PaymentManager();
+        CustomerManager customermanager = new CustomerManager();
 
         System.out.println("----------Login-----------");
         while(true){
@@ -48,6 +54,8 @@ public class Main {
             System.out.println("3.Products");
             System.out.println("4.Ivoice:");
             System.out.println("5.Order");
+            System.out.println("6.Sales");
+            System.out.println("7.Payment");
             System.out.println("5.Exit");
             
             System.out.println("Enter the Numbr:");
@@ -122,6 +130,7 @@ public class Main {
                 inManager.createInvoice();
             }
             else if (choice ==5){
+                System.out.println("-----------Order-------------");
                 System.out.println("1.Add Order");
                 System.out.println("2.View next Order");
                 System.out.println("3.Cencel Order");
@@ -150,8 +159,56 @@ public class Main {
                 }
                 else{
                     System.out.println("Invalid Input");
+                    return;
+
 
                 }
+            }
+            else if(choice ==6){
+                Scanner sc  = new Scanner(System.in);
+                System.out.println("--------------Sales----------------");
+                System.out.println("1.View Sale");
+                System.out.println("Enter your choice:");
+                int i =sc.nextInt();
+                if(i==1){
+                    salemanager.search();
+
+                }
+
+
+            }
+            else if(choice ==7){
+                Scanner sc  = new Scanner(System.in);
+                System.out.println("-------Payment------");
+                System.out.println("1.view payment");
+                System.out.println("Entetr your choice:");
+                int ans = sc.nextInt();
+                if(ans==1){
+                    paymentmanager.search();
+
+                }
+
+
+            }
+            else if(choice ==1){
+                Scanner sc  = new Scanner(System.in);
+                System.out.println("----------Customer----------");
+                System.out.println("1.Add Customer");
+                System.out.println("2.Delete Custeomer");
+                System.out.println("3.Update Customer");
+                System.out.println("Enter your choice:");
+                int ans = sc.nextInt();
+                if(ans ==1){
+                    customermanager.createCustomer();
+
+                }
+                else if(ans==2){
+                    customermanager.deleteCustomer();
+                }
+                else if(ans ==3){
+                    customermanager.updateCustomer();
+                }
+
             }
 
 

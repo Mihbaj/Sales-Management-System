@@ -33,6 +33,7 @@ public class InvoiceManager {
                 nItem++;
                 
                 SaleItem Saleitem = new SaleItem(newItem.getProductName(),newItem.getQuntity(),newItem.getPrice());
+                Saleitem.setId(newItem.getitemId());
                 saleList.add(Saleitem);
                 System.out.println("Do you Want to add more Item(yes/no):");
                 String ans = scanner.nextLine();

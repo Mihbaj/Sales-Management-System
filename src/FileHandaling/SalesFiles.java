@@ -28,7 +28,8 @@ public class SalesFiles{
                 for(int i=0;i<itemsArray.length;i++){
                     String[] itemData = itemsArray[i].split(":");
                     
-                    SaleItem item = new SaleItem(itemData[0],Double.parseDouble(itemData[1]),Double.parseDouble(itemData[2]));
+                    SaleItem item = new SaleItem(itemData[1],Double.parseDouble(itemData[2]),Double.parseDouble(itemData[3]));
+                    item.setId(Integer.parseInt(itemData[0]));
                     itemList.add(item);
 
                 }

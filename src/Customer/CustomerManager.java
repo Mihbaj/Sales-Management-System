@@ -124,8 +124,10 @@ public class CustomerManager {
             }
         
         }
-        Customer oldCustomer = customerTable.search(id);
+        
         Customer changeCustomer = customerTable.search(id);
+        customermanager.updateFile(changeCustomer);
+        changeCustomer.displayCustomer();
         while(true){
             System.out.println("1.Id 2.Name 3.phone Number 4.Email 5.Address");
             int ans;
@@ -133,6 +135,7 @@ public class CustomerManager {
             while(true){
                 System.out.println("Please Enter the number :");
                 ans = scanner.nextInt();
+                scanner.nextLine();
                 
                 if(ans<=0 || ans>5){
                     System.out.println("must enter 1 to 5");
@@ -140,6 +143,7 @@ public class CustomerManager {
                 else{
                     break;
                 }
+                
 
             }
             if(ans==1){
@@ -148,6 +152,7 @@ public class CustomerManager {
                     while(true){
                         System.out.println("Enter new Id:");
                         newId = scanner.nextInt();
+                        scanner.nextLine();
                         if(newId<0){
                             System.out.println("Id must be greater than 0");
                         }
@@ -169,7 +174,7 @@ public class CustomerManager {
                     
 
                 }
-                scanner.nextLine();
+                
                 String i;
                 while(true){
                     System.out.println("Do you want continu(yes/no)");
@@ -287,11 +292,12 @@ public class CustomerManager {
         }
         customerTable.delete(id);
         customerTable.insert(changeCustomer.getId(),changeCustomer);
+       
         customermanager.write(changeCustomer);
-        customermanager.updateFile(oldCustomer);
+        
 
     }
-    public void delteCustomer(){
+    public void deleteCustomer(){
         Scanner scanner = new Scanner(System.in);
         int deleteId;
         while(true){

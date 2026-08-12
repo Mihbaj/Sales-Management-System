@@ -51,7 +51,7 @@ public class Customer {
         return address;
     }
 
-    public void DisplayCustomer(){
+    public void displayCustomer(){
         System.out.println("Id:"+customerId);
         System.out.println("Name:"+name);
         System.out.println("Phone Number:"+phoneNumber);

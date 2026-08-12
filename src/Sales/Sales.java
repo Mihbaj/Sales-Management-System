@@ -27,6 +27,10 @@ public class Sales {
         System.out.println("Payment Method:"+paymentMethod);
         System.out.println("Payment Status:"+paymentStatus);
         System.out.println("Date:"+date);
+        System.out.println("Items:");
+        for(int i=0;i<itemList.size();i++){
+            itemList.get(i).display();
+        }
     }
     @Override
     public String toString(){

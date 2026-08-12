@@ -4,6 +4,8 @@ import Item.*;
 import FileHandaling.*;
 import AVL.*;
 import java.time.LocalDate;
+import java.util.Scanner;
+
 
 
 
@@ -20,6 +22,7 @@ public class SalesManager {
             fileload = false;
 
         }
+      
 
     }
 
@@ -31,6 +34,19 @@ public class SalesManager {
         
 
         
+    }
+    public void search(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter the sale id:");
+        String id = sc.nextLine();
+
+        int searchId =Integer.parseInt(id.substring(2));
+        Sales sale = tree.search(searchId);
+        if(sale == null){
+            System.out.println("This sale id is not exit");
+            return;
+        }
+        sale.displaySales();
     }
 
 

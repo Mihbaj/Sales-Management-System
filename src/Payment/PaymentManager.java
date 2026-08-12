@@ -78,6 +78,19 @@ public class PaymentManager {
 
 
     }
+    public void search(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter the Payment Id:");
+        String searchId =sc.nextLine();
+        Payment payment = paymentTable.search(searchId);
+        if(payment == null){
+            System.out.println("This Payment id is not exit");
+            return;
+
+        }
+        payment.displayPayment();
+
+    }
 
     
 }
