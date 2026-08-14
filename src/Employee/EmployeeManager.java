@@ -3,6 +3,7 @@ import java.util.Scanner;
 import java.io.*;
 import java.io.File;
 import java.util.HashSet;
+import SortingAlgorithams.*;
 
 
 import LinkList.*;
@@ -15,7 +16,7 @@ public class EmployeeManager {
     static File file = new File("Employees.txt");
     static File tem = new File("Temperary.txt");
 
-    boolean fileload = true;
+    static boolean fileload = true;
 
     public EmployeeManager(){
         if (fileload){
@@ -25,7 +26,7 @@ public class EmployeeManager {
         
 
     }
-     static Scanner scanner = new Scanner(System.in);
+    static Scanner scanner = new Scanner(System.in);
 
     public void addEmployee(){
         
@@ -117,6 +118,7 @@ public class EmployeeManager {
                 String line = reader.nextLine();
                 String[] data = line.split(",");
                 Employee employee = new Employee(Integer.parseInt(data[1]),data[0],data[2],data[3],data[4],data[5]);
+                employee.setUserName(data[6]);
 
                 id.add(employee.getId());
                 email.add(employee.getEmail());
@@ -512,6 +514,54 @@ public class EmployeeManager {
             current = current.getNext();
         }
         return null;
+    }
+    public void search(){
+        Scanner sc = new Scanner(System.in);
+        while(true){
+            System.out.println("Enter the employee id:");
+            int searchId = sc.nextInt();
+            sc.nextLine();
+            LinkNode<Employee> current = employeeList.getFirst();
+            while(current!=null){
+                if(current.getData().getId() == searchId){
+                    current.getData().displayEmployee();
+                    return;
+                }
+                current = current.getNext();
+            }
+            System.out.println("This id is not Exit");
+            System.out.println("Do you want to continue(yes/no)");
+            String ans = sc.nextLine();
+            if(ans.equalsIgnoreCase("no") || (!ans.equalsIgnoreCase("yes") && !ans.equalsIgnoreCase("no"))){
+                return;
+
+            }
+                
+        }
+    }
+    public void displayAll(){
+        Sorting<Integer> sorting = new Sorting<>();
+        Integer[] array = new Integer[employeeList.length()];
+        int index=0;
+        LinkNode<Employee> current = employeeList.getFirst();
+        if(current == null){
+            System.out.println("There are not employees");
+            return;
+
+        }
+        while(current!=null){
+            array[index] = current.getData().getId();
+            index++;
+            current = current.getNext();
+        }
+        sorting.selectionSort(array);
+        for(int i =0;i<array.length;i++){
+            Employee employee = search(array[i]);
+            employee.displayEmployee();
+
+
+        }
+
     }
 
     

@@ -6,6 +6,7 @@ public class Product {
     // add category
     private double sellingPrice;
     private double costPrice;
+    private String categorie;
     
    
     //add sublierId
@@ -15,6 +16,7 @@ public class Product {
         this.name = name;
         this.sellingPrice = sellingPrice;
         this.costPrice = costPrice;
+        this.categorie = categorie;
         
       
 
@@ -46,16 +48,20 @@ public class Product {
     public double getCostPrice(){
         return costPrice;
     }
+    public void setCategorie(String categorie){
+        this.categorie = categorie;
+    }
     
     // set getter and setter
 
     @Override 
     public String toString(){
-        return productId+","+name+","+sellingPrice+","+costPrice;
+        return productId+","+name+","+sellingPrice+","+costPrice+","+categorie;
     }
     public void display(){
         System.out.println("Product Id:"+productId);
         System.out.println("Name:"+name);
+        System.out.println("Categorie:"+categorie);
         System.out.println("Cost Price:"+costPrice);
         System.out.println("Selling Price:"+sellingPrice);
       

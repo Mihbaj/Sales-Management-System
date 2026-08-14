@@ -7,6 +7,7 @@ import FileHandaling.*;
 import HashTable.HashTable;
 import Graph.Graph;
 import LinkList.*;
+import java.util.List;
 
 public class SupplierManager {
     static public HashTable<Integer,Supplier> supplierTable = new HashTable<>();
@@ -70,6 +71,7 @@ public class SupplierManager {
             if(ans.equalsIgnoreCase("yes")){
                 System.out.println("Re enter the id:");
                 id = scanner.nextInt();
+                scanner.nextLine();
                 if(supplierTable.search(id)==null){
                     used = false;
                 }
@@ -78,17 +80,19 @@ public class SupplierManager {
 
         }
         Supplier newSupplier = new Supplier(id,name,company,phoneNumber,email,address);
-        supplierTable.insert(id,newSupplier);
-        suppliermanager.write(newSupplier);
+        
+        
 
-        graph.addVertex(id+name);
+        
         while(true){
             System.out.println("Enter a product(that supplier supplies):");
             productName = scanner.nextLine();
+            
             newSupplier.addProductName(productName);
             graph.addEdge((id+name),productName);
             System.out.println("Do you want add more Item(yes/no)");
             String ans = scanner.nextLine();
+            
             if(ans.equalsIgnoreCase("no")){
                 break;
             }
@@ -98,6 +102,10 @@ public class SupplierManager {
             }
 
         }
+        suppliermanager.write(newSupplier);
+        supplierTable.insert(id,newSupplier);
+        graph.addVertex(id+name);
+
 
 
 
@@ -149,15 +157,17 @@ public class SupplierManager {
             }
         
         }
-        Supplier oldSupplier = supplierTable.search(id);
+        
         Supplier changeSupplier = supplierTable.search(id);
+        suppliermanager.updateFile(changeSupplier);
         while(true){
             System.out.println("1.Id 2.Name 3.phone Number 4.Email 5.Address 6.Company");
             int ans;
 
             while(true){
                 System.out.println("Please Enter choice :");
-                ans = scanner.nextInt();
+                ans = Integer.parseInt(scanner.nextLine());
+                
                 
                 if(ans<=0 || ans>6){
                     System.out.println("must enter 1 to 6");
@@ -173,6 +183,7 @@ public class SupplierManager {
                     while(true){
                         System.out.println("Enter new Id:");
                         newId = scanner.nextInt();
+                      
                         if(newId<0){
                             System.out.println("Id must be greater than 0");
                         }
@@ -335,10 +346,10 @@ public class SupplierManager {
         supplierTable.delete(id);
         supplierTable.insert(changeSupplier.getId(),changeSupplier);
         suppliermanager.write(changeSupplier);
-        suppliermanager.updateFile(oldSupplier);
+       
 
     }
-    public void delteSupplier(){
+    public void deleteSupplier(){
         Scanner scanner = new Scanner(System.in);
         int deleteId;
         while(true){
@@ -352,8 +363,9 @@ public class SupplierManager {
                 if(supplierTable.search(deleteId)!=null){
                     
                     suppliermanager.updateFile(supplierTable.search(deleteId));
-                    supplierTable.delete(deleteId);
                     graph.removeVertex(deleteId+supplierTable.search(deleteId).getName());
+                    supplierTable.delete(deleteId);
+                    
                     System.out.println("Customer deleted successfully.");
                     break;
 
@@ -414,6 +426,41 @@ public class SupplierManager {
        
 
         
+    }
+    public void displaySupplierAndProduct(){
+        graph.display();
+    }
+    public void displayProductsOfSupplier(){
+        Scanner sc = new Scanner(System.in);
+        int id;
+        String name;
+
+        do{
+            
+            System.out.println("Enter Supplier Id:");
+            id = sc.nextInt();
+            sc.nextLine();
+            System.out.println("Enter the Supplier Name:");
+            name = sc.nextLine();
+            if(!graph.containsVertex(id+name)){
+                System.out.println("This id is not exit");
+                System.out.println("Do you want continue(yes/no):");
+                String ans = sc.nextLine();
+                if(ans.equalsIgnoreCase("no")){
+                    return;
+                }
+            }
+
+        } while(!graph.containsVertex(id+name));
+        List<String> productNames = graph.getNeighbours(id+name);
+        System.out.println("Products of suppplier "+ name);
+        for(int i =0;i<productNames.size();i++){
+            System.out.println(productNames.get(i));
+        }
+        
+
+
+
     }
     
 

@@ -48,6 +48,10 @@ public class SalesManager {
         }
         sale.displaySales();
     }
+    public void displayAll(){
+        tree.inorder();
+
+    }
 
 
     

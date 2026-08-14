@@ -1,4 +1,5 @@
 package HashTable;
+import LinkList.*;
 
 
 
@@ -78,7 +79,6 @@ public class HashTable<K,V> {
                     previous.next = current.next;
                 }
                 elementCount--;
-                System.out.println("Product deleted successfully.");
                 return true;
             }
             previous = current;
@@ -86,7 +86,7 @@ public class HashTable<K,V> {
 
 
         }
-        System.out.println("Product not found.");
+        System.out.println("not found.");
         return false;
     }
 
@@ -159,4 +159,19 @@ public class HashTable<K,V> {
        
 
     }
+    public LinkList<V> returnAll() {
+        LinkList<V> list = new LinkList<>();
+        for (int i = 0; i < table.length; i++){
+            
+
+            HashNode<K,V> current = table[i];
+
+            while (current != null){
+                list.add(current.value);
+                current = current.next;
+            }
+        }
+        return list;
+    }
+
 }

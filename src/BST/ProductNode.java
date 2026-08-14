@@ -13,6 +13,15 @@ public class ProductNode {
         this.leftChild = null;
         this.rightChild = null;
     }
+    public Product getProduct(){
+        return product;
+    }
+    public ProductNode getLeft(){
+        return leftChild;
+    }
+    public ProductNode getRight(){
+        return rightChild;
+    }
 
     public void displayNode(){
         

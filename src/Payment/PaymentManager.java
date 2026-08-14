@@ -5,6 +5,8 @@ import java.util.Scanner;
 import HashTable.HashTable;
 import InvoiceSystem.*;
 import FileHandaling.*;
+import LinkList.*;
+import SortingAlgorithams.*;
 
 public class PaymentManager {
     
@@ -89,6 +91,32 @@ public class PaymentManager {
 
         }
         payment.displayPayment();
+
+    }
+    public void displayAll(){
+        Sorting<String> sorting = new Sorting<>();
+        LinkList<Payment> list =paymentTable.returnAll();
+        String[] array = new String[list.length()];
+        int index=0;
+        LinkNode<Payment> current = list.getFirst();
+        if(current==null){
+            System.out.println("No order");
+            return;
+        }
+    
+        while(current!=null){
+            array[index]= current.getData().getId();
+            index ++;
+            current = current.getNext();
+        }
+        sorting.quickSort(array,0,array.length-1);
+        for(int i = 0;i<array.length;i++){
+            Payment payment = paymentTable.search(array[i]);
+            if(payment!=null){
+                payment.displayPayment();
+            }
+        }
+        
 
     }
 

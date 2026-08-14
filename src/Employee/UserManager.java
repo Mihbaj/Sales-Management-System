@@ -10,7 +10,7 @@ public class UserManager {
     final private String adminPassword= "admin1234";
 
 
-    public static HashTable<String,String> userTable = new HashTable<>();
+    public static HashTable<String,User> userTable = new HashTable<>();
     EmployeeManager manager = new EmployeeManager();
     UserFile usermanager = new UserFile();
 
@@ -58,25 +58,23 @@ public class UserManager {
                 }
             }
 
-           }
-           while(userTable.search(userName)!=null);
+           } while(userTable.search(userName)!=null);
 
            System.out.println("Enter the pasword:");
            passWord = scanner.nextLine();
            User newUser = new User();
            newUser.setUserName(userName);
            newUser.setPassword(passWord);
+           newUser.setEmployeeId(id);
            
-           userTable.insert(userName,passWord);
+           userTable.insert(userName,newUser);
            usermanager.write(newUser);
-           Employee employee = manager.search(id);
-           if(employee!=null){
-            employee.setUserName(userName);
-            manager.rewriteFile(id);
-            manager.fileWrite(employee);
-
-
-           }
+           Employee employee=manager.search(id);
+           employee.setUserName(userName);
+           manager.rewriteFile(id);
+           manager.fileWrite(employee);
+           
+           
            
   
         }
@@ -92,19 +90,20 @@ public class UserManager {
         verification();
         if(manager.search(id)!=null){
             if(manager.search(id).getUserName()!=null){
+                
                 Employee employee = manager.search(id);
-                employee.setUserName(null);
-                
-                User user = new User();
-                user.setUserName(employee.getUserName());
-                user.setPassword(userTable.search(user.getUserName()));
+                User deleteUser =userTable.search(employee.getUserName());
+                usermanager.updateFile(deleteUser);
+                userTable.delete(employee.getUserName());
                
-                userTable.delete(user.getUserName());
-                usermanager.updateFile(user);
-                
-                
+                employee.setUserName(null);
                 manager.rewriteFile(id);
                 manager.fileWrite(employee);
+
+                
+                
+                
+                
 
 
 
@@ -121,10 +120,10 @@ public class UserManager {
         while(true){
             System.out.println("Enter the Admim Name:");
             String name = scanner.nextLine();
-            if(name=="admin"){
+            if(name.equals("admin")){
                 System.out.println("Enter Password:");
                 String password = scanner.nextLine();
-                if(password=="admin1234"){
+                if(password.equals("admin1234")){
                     System.out.println("Permission granted");
                     break;
                 }
@@ -169,8 +168,9 @@ public class UserManager {
         return false;//so password can be null
     }
     public String  getPassword(String userName){
-        String word = userTable.search(userName);
-        return word;
+        User user = userTable.search(userName);
+        String password = user.getPassword();
+        return password;
     }
 
     

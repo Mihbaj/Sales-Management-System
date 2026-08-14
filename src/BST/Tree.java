@@ -8,6 +8,9 @@ public class Tree {
         root = null;
 
     }
+    public ProductNode getRoot(){
+        return root;
+    }
     public ProductNode find(int ikey){
         ProductNode current = root;
         
@@ -159,6 +162,46 @@ public class Tree {
         }
         return successor;
 
+    }
+    public void inorder() {
+        inorder(root);
+    }
+
+    private void inorder(ProductNode node) {
+        if (node != null) {
+            inorder(node.leftChild);
+
+            System.out.println(node.key);
+        // node.product.display();
+
+            inorder(node.rightChild);
+        }
+    }
+    public void preorder() {
+        preorder(root);
+    }
+
+    private void preorder(ProductNode node) {
+        if (node != null) {
+            System.out.println(node.key);
+        // node.product.display();
+
+            preorder(node.leftChild);
+
+            preorder(node.rightChild);
+        }
+    }
+    public void postorder() {
+        postorder(root);
+    }
+
+    private void postorder(ProductNode node) {
+        if (node != null) {
+            postorder(node.leftChild);
+            postorder(node.rightChild);
+            System.out.println(node.key);
+        // node.product.display();
+        }
     }
     
 }

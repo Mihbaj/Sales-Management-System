@@ -5,7 +5,6 @@ import HashTable.*;
 
 public class User{
     Scanner scanner = new Scanner(System.in);
-    public static HashTable<String,String> userTable = new HashTable<>();
     EmployeeManager manager = new EmployeeManager();
     
 
@@ -28,9 +27,12 @@ public class User{
     public String getPassword(){
         return password;
     }
+    public void setEmployeeId(int id){
+        employeeId = id;
+    }
     @Override
     public String toString(){
-        return username+","+password;
+        return username+","+password+","+employeeId;
 
     }
     /* 

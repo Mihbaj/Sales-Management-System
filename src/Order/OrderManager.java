@@ -4,6 +4,7 @@ import StackAndQueue.*;
 import java.util.Scanner;
 import HashTable.SetADT;
 import FileHandaling.OrderFile;
+import SortingAlgorithams.*;
 
 public class OrderManager {
     
@@ -175,6 +176,39 @@ public class OrderManager {
         orderSet.remove(order.getId());
         filemanager.updateDelete(order);
         System.out.println("Order id deleted succesfully");
+    }
+    public void displayAll(){
+        Sorting<Integer> sorting = new Sorting<>();
+        Integer[] array = new Integer[orderSet.size()];
+        int index=0;
+        Node<Order> current = queue.getFront();
+        if(current==null){
+            System.out.println("There are no Orders");
+            return;
+        }
+        while(current!=null){
+            Order order = current.data;
+            if(order!=null){
+                array[index]=order.getId();
+                index++;
+                current = current.next;
+            }
+        }
+        sorting.mergeSort(array,0,array.length-1);
+        for(int i =0;i<array.length;i++){
+            Node<Order> cr = queue.getFront();
+            while(cr!=null){
+                if(cr.data.getId()==array[i]){
+                    cr.data.displayOrder();
+                    break;
+                }
+                cr = cr.next;
+            }
+        }
+
+
+
+
     }
     
 }

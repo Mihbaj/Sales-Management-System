@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 import java.io.File;
 
-import Employee.User;
+import Employee.*;
 
 
 
@@ -27,7 +27,8 @@ public class UserFile {
                 User user = new User();
                 user.setUserName(data[0]);
                 user.setPassword(data[1]);
-                User.userTable.insert(user.getUserName(),user.getPassword());
+                user.setEmployeeId(Integer.parseInt(data[2]));
+                UserManager.userTable.insert(user.getUserName(),user);
 
 
             }
@@ -72,6 +73,7 @@ public class UserFile {
                 User user = new User();
                 user.setUserName(data[0]);
                 user.setPassword(data[1]);
+                user.setEmployeeId(Integer.parseInt(data[2]));
                 if(user.getUserName()==deleteUser.getUserName()){
                     continue;
                 }

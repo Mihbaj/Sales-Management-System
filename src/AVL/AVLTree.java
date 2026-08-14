@@ -264,7 +264,7 @@ public class AVLTree {
         if (node != null) {
             inorderTraversal(node.left);
 
-            System.out.print(node.id + " ");
+            node.sales.displaySales();
 
             inorderTraversal(node.right);
         }

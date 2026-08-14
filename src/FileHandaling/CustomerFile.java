@@ -23,6 +23,7 @@ public class CustomerFile {
                 String[] data = line.split(",");
                 Customer customer = new Customer(Integer.parseInt(data[0]),data[1],data[2],data[3],data[4]);
                 CustomerManager.customerTable.insert(customer.getId(),customer);
+                CustomerManager.customerIdList.add(Integer.parseInt(data[0]));
 
 
             }

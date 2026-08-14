@@ -4,12 +4,16 @@ import java.io.IOException;
 import java.util.HashSet;
 import HashTable.*;
 import FileHandaling.CustomerFile;
+import LinkList.*;
+import SortingAlgorithams.*;
 
 
 public class CustomerManager {
     
     static public HashTable<Integer,Customer> customerTable = new HashTable<>();
     CustomerFile customermanager = new CustomerFile();
+    static public LinkList<Integer> customerIdList = new LinkList<>();
+
 
     boolean fileload=true;
     public CustomerManager(){
@@ -73,6 +77,7 @@ public class CustomerManager {
         Customer newCustomer = new Customer(id,name,phoneNumber,email,address);
         customerTable.insert(id,newCustomer);
         customermanager.write(newCustomer);
+        customerIdList.add(id);
 
 
 
@@ -166,6 +171,9 @@ public class CustomerManager {
     
                     if(customerTable.search(newId)==null){
                         changeCustomer.setId(newId);
+                        customerIdList.delete(id);
+                        customerIdList.add(newId);
+                        System.out.println("New id is added succesfully");
                         break;
                     }
                     else{
@@ -312,6 +320,7 @@ public class CustomerManager {
                     
                     customermanager.updateFile(customerTable.search(deleteId));
                     customerTable.delete(deleteId);
+                    customerIdList.delete(deleteId);
                     System.out.println("Customer deleted successfully.");
                     break;
 
@@ -372,6 +381,60 @@ public class CustomerManager {
        
 
         
+    }
+    public void search(){
+        Scanner sc = new Scanner(System.in);
+
+        while(true){
+            System.out.println("Enter the customer Id:");
+            int searchId = sc.nextInt();
+            sc.nextLine();
+            Customer customer = customerTable.search(searchId);
+            if(customer ==null){
+                System.out.println("This id is not exit");
+                System.out.println("Do you want to continue(yes/no):");
+                String ans = sc.nextLine();
+                if(ans.equalsIgnoreCase("no") || (!ans.equalsIgnoreCase("yes") && !ans.equalsIgnoreCase("no"))){
+                    return;
+                }
+                
+
+
+            }
+            else{
+                customer.displayCustomer();
+                break;
+            }
+
+        }
+        
+    }
+    public void displayAll(){
+        Sorting<Integer> sorting = new Sorting<>();
+        Integer[] array = new Integer[customerIdList.length()];
+        int index =0;
+        LinkNode<Integer> current = customerIdList.getFirst();
+        if(current==null){
+            System.out.println("There are no Customers");
+            return;
+        }
+        while(current!=null){
+            array[index] = current.getData();
+            index++;
+            current=current.getNext();
+            
+        }
+        sorting.bubbleSort(array);
+
+        for(int i=0;i<array.length;i++){
+            Customer customer = customerTable.search(array[i]);
+            if(customer!=null){
+                customer.displayCustomer();
+
+            }
+            
+        }
+
     }
 
         

@@ -72,6 +72,7 @@ public class Supplier {
         productNames.add(name);
 
     }
+   
     
 
     // add setter and getter method 

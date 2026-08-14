@@ -63,11 +63,12 @@ public class Employee {
         System.out.println("Phone Number:"+phoneNumber);
         System.out.println("Email:"+email);
         System.out.println("Address:"+address);
+        System.out.println("User Name:"+userName);
     }
 
     @Override
     public String toString(){
-        return name+","+employeeId+","+role+","+phoneNumber+","+email+","+address;
+        return name+","+employeeId+","+role+","+phoneNumber+","+email+","+address+","+userName;
     }
     @Override 
     public boolean equals(Object obj){

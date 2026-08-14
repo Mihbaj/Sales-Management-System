@@ -31,6 +31,7 @@ public class LinkList<T> {
 
 
     }
+    
     public LinkNode<T> returnNode(T t){
         LinkNode<T> current = first;
         while(current!=null){
@@ -40,7 +41,7 @@ public class LinkList<T> {
             current = current.getNext();
         }
         return null;
-    }
+    } 
 
     public void add(T t){
         LinkNode<T> newNode = new LinkNode<>(t);
@@ -66,9 +67,6 @@ public class LinkList<T> {
                
                 
             first = first.getNext();
-            if(first !=null){
-                first.setPrevious(null);
-            }
                 
             length--;
             return;

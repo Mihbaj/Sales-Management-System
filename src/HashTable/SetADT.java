@@ -63,5 +63,8 @@ public class SetADT<T> {
             System.out.println(elements[i]);
         }
     }
+    public T[] returnElement(){
+        return elements;
+    }
     
 }
