@@ -17,7 +17,7 @@ public class ProductManager {
 
     Categories categorie = new Categories();
     Scanner sc = new Scanner(System.in);
-    static Tree tree = new Tree();
+    public static Tree tree = new Tree();
    
     static private boolean fileload = true;
 

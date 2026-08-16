@@ -21,7 +21,10 @@ public class Stacknew {
         if(lastActivite==null){
             System.out.println("Not Found");
         }
-        System.out.println(lastActivite);
+        else{
+            System.out.println(lastActivite);
+        }
+            
         
     }
     public void deleteAll(){

@@ -52,6 +52,7 @@ public class Invoice{
             item.displayItem();
         }
         System.out.println("Totol Amound:"+totalAmount);
+        
 
     }
   

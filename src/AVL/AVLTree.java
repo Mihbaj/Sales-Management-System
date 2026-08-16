@@ -1,27 +1,4 @@
-/*package AVL;
-public class AVLTree {
 
-    AVLNode root;
-
-
-    int height(AVLNode node){
-
-        if(node == null)
-            return 0;
-
-        return node.height;
-    }
-
-
-    int getBalance(AVLNode node){
-
-        if(node == null)
-            return 0;
-
-        return height(node.left) - height(node.right);
-    }
-
-}*/
 package AVL;
 
 import Sales.*;
@@ -265,6 +242,7 @@ public class AVLTree {
             inorderTraversal(node.left);
 
             node.sales.displaySales();
+            System.out.println();
 
             inorderTraversal(node.right);
         }
@@ -280,7 +258,8 @@ public class AVLTree {
     private void preorderTraversal(AVLNode node) {
 
         if (node != null) {
-            System.out.print(node.id + " ");
+            node.sales.displaySales();
+            System.out.println();
 
             preorderTraversal(node.left);
             preorderTraversal(node.right);
@@ -300,7 +279,8 @@ public class AVLTree {
             postorderTraversal(node.left);
             postorderTraversal(node.right);
 
-            System.out.print(node.id + " ");
+            node.sales.displaySales();
+            System.out.println();
         }
     }
 

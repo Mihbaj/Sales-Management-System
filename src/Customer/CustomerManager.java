@@ -78,6 +78,7 @@ public class CustomerManager {
         customerTable.insert(id,newCustomer);
         customermanager.write(newCustomer);
         customerIdList.add(id);
+        System.out.println("Customer is added");
 
 
 
@@ -117,7 +118,7 @@ public class CustomerManager {
                 System.out.println("Customer id is not exit");
                 System.out.println("Do you want to continue(yes/no):");
                 String ans = scanner.nextLine();
-                while(ans.equalsIgnoreCase("yes")&& ans.equalsIgnoreCase("no")){
+                while(!ans.equalsIgnoreCase("yes")&& !ans.equalsIgnoreCase("no")){
                     System.out.println("Enter only yes or no:");
                     ans = scanner.nextLine();
 
@@ -302,6 +303,7 @@ public class CustomerManager {
         customerTable.insert(changeCustomer.getId(),changeCustomer);
        
         customermanager.write(changeCustomer);
+        System.out.println("Customer is updated.");
         
 
     }
@@ -394,9 +396,14 @@ public class CustomerManager {
                 System.out.println("This id is not exit");
                 System.out.println("Do you want to continue(yes/no):");
                 String ans = sc.nextLine();
-                if(ans.equalsIgnoreCase("no") || (!ans.equalsIgnoreCase("yes") && !ans.equalsIgnoreCase("no"))){
+                if(ans.equalsIgnoreCase("no")){
                     return;
                 }
+                if(!ans.equalsIgnoreCase("yes") && !ans.equalsIgnoreCase("no")){
+                    System.out.println("Invalid input");
+                    return;
+                }
+    
                 
 
 

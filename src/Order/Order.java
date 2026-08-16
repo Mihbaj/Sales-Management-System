@@ -49,6 +49,7 @@ public class Order {
     public void displayOrder(){
         System.out.println("Order Id:"+orderId);
         System.out.println("Date:"+date+", Time:"+time);
+        System.out.println("Status:"+status);
         System.out.println("Order Items:");
         for(int i=0;i<itemList.size();i++){
             Item  item = itemList.get(i);

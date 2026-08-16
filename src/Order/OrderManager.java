@@ -34,6 +34,9 @@ public class OrderManager {
         while(choice){
             Scanner scanner = new Scanner(System.in);
             Item newItem = manager.createItem();
+            if(newItem==null){
+                return;
+            }
             newItem.setId(totalitem);
             totalitem++;
             order.addItemToList(newItem);
@@ -107,59 +110,7 @@ public class OrderManager {
 
 
         }
-    }/* 
-    public void deleteOrder(){
-        Scanner scanner = new Scanner(System.in);
-        int deleteId;
-        while(true){
-            System.out.println("Enter the Order Id:");
-            deleteId = scanner.nextInt();
-            scanner.nextLine();
-            if(orderSet.contains(deleteId)){
-                System.out.println("Do you want delete the Order(yes/no):");
-                String ans = scanner.nextLine();
-                if(ans.equalsIgnoreCase("no")){
-                    return;
-                }
-                else if(ans.equalsIgnoreCase("yes")){
-                    Order order = queue.remove();
-                    orderSet.remove(order.getId());
-                    filemanager.updateDelete(order);
-                    lastOrderNumber--;
-                    System.out.println("Order id deleted succesfully");
-                    break;
-
-                }
-                else{
-                    System.out.println("Invalid Input");
-                    return;
-                }
-            }
-            else{
-                System.out.println("This Id is not Exit");
-            }
-
-
-        
-            
-        }
     }
-        
-        /* 
-        while(!userSet.contains(deleteId)){
-            System.out.println("Thsi id is not found");
-            System.out.println("Do you want to continue(yes/no)");
-            String ans = scanner.nextLine();
-            if(ans.equalsIgnoreCase("no")){
-                return;
-            }
-            else{
-                System.out.println("Enter the Order Id:");
-                deleteId= scanner.nextInt();
-                scanner.nextLine();
-                
-            }
-        }*/
         
         
 

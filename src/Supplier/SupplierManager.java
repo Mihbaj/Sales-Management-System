@@ -462,6 +462,23 @@ public class SupplierManager {
 
 
     }
+    public void getProductSuppliers(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter the Product Name:");
+        String name = sc.nextLine();
+        if(graph.containsVertex(name)){
+            List<String> supplierList = graph.getNeighbours(name);
+            System.out.println("Supplier/s of "+name+":");
+            for(int i=0;i<supplierList.size();i++){
+                
+                System.out.println(supplierList.get(i));
+
+            }
+        }else{
+            System.out.println("This Product is not Found");
+        }
+        
+    }
     
 
         

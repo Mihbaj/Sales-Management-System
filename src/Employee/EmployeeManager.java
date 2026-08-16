@@ -2,16 +2,17 @@ package Employee;
 import java.util.Scanner;
 import java.io.*;
 import java.io.File;
-import java.util.HashSet;
+
 import SortingAlgorithams.*;
+import HashTable.SetADT;
 
 
 import LinkList.*;
 
 
 public class EmployeeManager {
-    static HashSet<Integer> id = new HashSet<>();
-    static HashSet<String> email = new HashSet<>();
+    static SetADT<Integer> id = new SetADT<>();
+    static SetADT<String> email = new SetADT<>();
     static LinkList<Employee> employeeList = new LinkList<>();
     static File file = new File("Employees.txt");
     static File tem = new File("Temperary.txt");

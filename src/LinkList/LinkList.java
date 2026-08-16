@@ -16,18 +16,18 @@ public class LinkList<T> {
         return first;
     }
 
-    public T find(T t){
+    public boolean find(T t){
         
         LinkNode<T> current = first;
         while(current != null){
             if(current.getData().equals(t)){
-                return current.getData();
+                return true;
 
             }
             current = current.getNext();
 
         }
-        return null;
+        return false;
 
 
     }

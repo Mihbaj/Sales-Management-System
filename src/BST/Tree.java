@@ -171,8 +171,9 @@ public class Tree {
         if (node != null) {
             inorder(node.leftChild);
 
-            System.out.println(node.key);
-        // node.product.display();
+            //System.out.println(node.key);
+            node.product.display();
+            System.out.println("---------");
 
             inorder(node.rightChild);
         }
@@ -183,8 +184,9 @@ public class Tree {
 
     private void preorder(ProductNode node) {
         if (node != null) {
-            System.out.println(node.key);
-        // node.product.display();
+            //System.out.println(node.key);
+            node.product.display();
+            System.out.println("------------");
 
             preorder(node.leftChild);
 
@@ -199,8 +201,9 @@ public class Tree {
         if (node != null) {
             postorder(node.leftChild);
             postorder(node.rightChild);
-            System.out.println(node.key);
-        // node.product.display();
+            //System.out.println(node.key);
+            node.product.display();
+            System.out.println("-------------");
         }
     }
     

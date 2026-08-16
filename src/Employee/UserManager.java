@@ -3,6 +3,7 @@ import java.util.Scanner;
 import HashTable.HashTable;
 import FileHandaling.UserFile;
 import Employee.UserManager;
+import LinkList.*;
 
 
 public class UserManager {
@@ -110,6 +111,22 @@ public class UserManager {
             }
             
             
+        }
+
+    }
+    public void displayAll(){
+        verification();
+        LinkList<User> userList = userTable.returnAll();
+        LinkNode<User> current = userList.getFirst();
+        if(current==null){
+            System.out.println("Not Found");
+            return;
+
+        }
+        while(current!=null){
+            current.getData().display();
+            current=current.getNext();
+
         }
 
     }

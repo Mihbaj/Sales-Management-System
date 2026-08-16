@@ -8,6 +8,7 @@ import Payment.PaymentManager;
 import Customer.CustomerManager;
 import StackAndQueue.Stacknew;
 import Supplier.SupplierManager;
+import BST.ProductNode;
 
 
 public class Main {
@@ -83,7 +84,7 @@ public class Main {
             System.out.println("7.Payment");
             System.out.println("8.Suplier");
             System.out.println("9.resent Activites");
-            System.out.println("5.Exit");
+            System.out.println("10.Exit");
             
             System.out.println("Enter the Numbr:");
             int choice = scanner.nextInt();
@@ -100,6 +101,7 @@ public class Main {
                     System.out.println("3.Update Employee");
                     System.out.println("4.Search Employee");
                     System.out.println("5.Display All Employee");
+                    System.out.println("6.Exit");
                     
                     System.out.println("Enter the Number:");
                     
@@ -129,12 +131,20 @@ public class Main {
                         manager.displayAll();
 
                     }
+                    else if(choiceEmployee==6){
+                        System.out.println("Exit...");
+                    }
+                    else{
+                        System.out.println("Invalid Input");
+                    }
 
                     
                 }
                 else if(choice1==2){
                     System.out.println("1.add User");
                     System.out.println("2.Delete User");
+                    System.out.println("3.Display All User");
+                    System.out.println("4.Exit");
                     System.out.println("Enter your choice:");
                     int ans = scanner.nextInt();
                     if(ans ==1){
@@ -150,6 +160,18 @@ public class Main {
                         int id = scanner.nextInt();
                         userManager.delete(id);
                     }
+                    else if(ans==3){
+                        recent.addActivite("Display All User");
+                        userManager.displayAll();
+
+                    }
+                    else if(ans ==4){
+                        System.out.println("Exit....");
+
+                    }
+                    else{
+                        System.out.println("Invalid Input");
+                    }
                 }
             }
             else if(choice == 3){
@@ -160,9 +182,12 @@ public class Main {
                 System.out.println("3.Delete Product");
                 System.out.println("4.Search Prodcut");
                 System.out.println("5.Display All Product");
+                System.out.println("6.Search Products(Between Range)");
+                System.out.println("7.Exit");
 
                 System.out.println("Enter the Number:");
                 int i = scanner.nextInt();
+                scanner.nextLine();
                 
                 if(i==1){
                     recent.addActivite("Add Product");
@@ -183,6 +208,21 @@ public class Main {
                 else if(i==5){
                     recent.addActivite("Display All Product");
                     productmanage.displayAll();
+                }
+                else if(i==7){
+                    System.out.println("Exit....");
+                }
+                else if(i==6){
+                    recent.addActivite("Search Products(Between Range)");
+                    ProductNode root =ProductManager.tree.getRoot();
+                    System.out.println("Enter the start Id:");
+                    int startId = scanner.nextInt();
+                    System.out.println("Enter the End Id:");
+                    int endId = scanner.nextInt();
+                    productmanage.rangeSearch(root,startId,endId);
+                }
+                else{
+                    System.out.println("Invalid Input");
                 }
             }
             else if(choice == 4){
@@ -225,11 +265,11 @@ public class Main {
                     orderManager.displayAll();
                 }
                 else if(i==6){
-                    return;
+                    System.out.println("Exit....");
                 }
                 else{
                     System.out.println("Invalid Input");
-                    return;
+                    
 
 
                 }
@@ -238,7 +278,8 @@ public class Main {
                 Scanner sc  = new Scanner(System.in);
                 System.out.println("--------------Sales----------------");
                 System.out.println("1.View Sale");
-                System.out.println("2.Display ");
+                System.out.println("2.Display All ");
+                System.out.println("3.Exit");
                 System.out.println("Enter your choice:");
                 int i =sc.nextInt();
                 if(i==1){
@@ -246,6 +287,17 @@ public class Main {
                     salemanager.search();
 
                 }
+                else if(i==2){
+                    recent.addActivite("Display All");
+                    salemanager.displayAll();
+                }
+                else if(i ==3){
+                    System.out.println("Exit...");
+                }
+                else{
+                    System.out.println("Invalid Input");
+                }
+
 
 
             }
@@ -254,6 +306,7 @@ public class Main {
                 System.out.println("-------Payment------");
                 System.out.println("1.view payment");
                 System.out.println("2.Display All Payment");
+                System.out.println("3.Exit");
                 System.out.println("Entetr your choice:");
                 int ans = sc.nextInt();
                 if(ans==1){
@@ -264,6 +317,12 @@ public class Main {
                 else if(ans==2){
                     recent.addActivite("Display All Payment");
                     paymentmanager.displayAll();
+                }
+                else if(ans==3){
+                    System.out.println("Exit.....");
+                }
+                else{
+                    System.out.println("Invalid Input");
                 }
 
 
@@ -276,6 +335,7 @@ public class Main {
                 System.out.println("3.Update Customer");
                 System.out.println("4.Search Customer");
                 System.out.println("5.Display All Employee");
+                System.out.println("6.Exit");
                 System.out.println("Enter your choice:");
                 int ans = sc.nextInt();
                 if(ans ==1){
@@ -300,9 +360,12 @@ public class Main {
                     recent.addActivite("Display All Customer");
                     customermanager.displayAll();
                 }
+                else if(ans ==6){
+                    System.out.println("Exit....");
+                }
                 else{
                     System.out.println("Invalid input");
-                    return;
+                    
                 }
 
             }
@@ -312,6 +375,7 @@ public class Main {
                 System.out.println("1.view last acitive");
                 System.out.println("2.Delte last activite");
                 System.out.println("3.Delete All");
+                System.out.println("4.Exit");
                 System.out.println("Enter your choice:");
                 int ans = sc.nextInt();
                 if(ans ==1){
@@ -323,9 +387,12 @@ public class Main {
                 else if(ans ==3){
                     recent.deleteAll();
                 }
+                else if(ans ==4){
+                    System.out.println("Exit...");
+                }
                 else{
                     System.out.println("Invalid input");
-                    return;
+                    
                 }
             }
             else if(choice ==8){
@@ -336,6 +403,8 @@ public class Main {
                 System.out.println("3.Delete Supplier");
                 System.out.println("4.Display All Supplier");
                 System.out.println("5.View The Products Of Supplier");
+                System.out.println("6.Display Suppliers Of A Product");
+                System.out.println("7.Exit");
                 System.out.println("Enter your choice:");
                 int ans = sc.nextInt();
                 if(ans==4){
@@ -359,8 +428,26 @@ public class Main {
                     recent.addActivite("View The Products Of Supplier");
                     suppliermanager.displayProductsOfSupplier();
                 }
+                else if(ans==6){
+                    recent.addActivite("Display Suppliers Of A Product");
+                    suppliermanager.getProductSuppliers();
+                }
+                else if(ans==7){
+                    System.out.println("Exit....");
+                }
+                else{
+                    System.out.println("Invalid Input");
+                }
                 
 
+            }
+            else if(choice==10){
+                System.out.println("Exit...");
+                return;
+            }
+            else{
+                System.out.println("Invalid Input");
+                return;
             }
 
 

@@ -51,12 +51,21 @@ public class InvoiceManager {
 
             }
             else{
-                System.out.println("This product is not founded!");
-                System.out.println("Do you want to add Item(yes/no):");
-                String ans = scanner.nextLine();
-                if(ans.equalsIgnoreCase("no")){
-                     Boolean = false;
+                while(true){
+                    System.out.println("Do you want to add Item(yes/no):");
+                    String ans = scanner.nextLine();
+                    if(ans.equalsIgnoreCase("no")){
+                        return;
+                    }
+                    if(ans.equalsIgnoreCase("yes")){
+                        break;
+                    }
+                    System.out.println("Invalid input");
+                    System.out.println("Enter only yes or no");
+                    
+
                 }
+               
 
 
             }
@@ -96,11 +105,10 @@ public class InvoiceManager {
             else{
                 invoice.display();
                 pay.displayPayment();
+                System.out.println("------------Tank You; Come Againg---------------");
+                System.out.println();
             }
-            //for(int i =0;i<list.size();i++){    
-
-
-            //}
+            
 
 
         }
@@ -112,7 +120,7 @@ public class InvoiceManager {
 
 
        
-        // we did not created user we choose user her; i did not add the price here
+        
         
         
 

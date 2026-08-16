@@ -96,7 +96,7 @@ public class HashTable<K,V> {
 
     public void displayAll(){
         if (elementCount == 0){
-            System.out.println("No products available.");
+            System.out.println("Not  available.");
             return;
         }
         for (int i = 0; i < table.length; i++){

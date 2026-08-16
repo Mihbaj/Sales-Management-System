@@ -6,7 +6,7 @@ public class SetADT<T> {
 
     @SuppressWarnings("unchecked")
     public SetADT(){
-        elements= (T[]) new Object[5];
+        elements= (T[]) new Object[20];
         size = 0;
     }
     public boolean add(T element){
@@ -58,7 +58,7 @@ public class SetADT<T> {
     public boolean isEmpty(){
         return size==0;
     }
-    public void displey(){
+    public void display(){
         for(int i =0;i<size;i++){
             System.out.println(elements[i]);
         }
