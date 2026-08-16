@@ -2,14 +2,17 @@ package BST;
 import Product.Product;
 
 public class Tree {
-    private Node root;
+    private ProductNode root;
 
     public Tree(){
         root = null;
 
     }
-    public Node find(int ikey){
-        Node current = root;
+    public ProductNode getRoot(){
+        return root;
+    }
+    public ProductNode find(int ikey){
+        ProductNode current = root;
         
         while(current.key != ikey){
             if(ikey < current.key){
@@ -30,7 +33,7 @@ public class Tree {
         return current;
     }
     public void insert(int id,Product productObj){
-        Node newNode = new Node(id,productObj);
+        ProductNode newNode = new ProductNode(id,productObj);
        /* newNode.key = id;
         newNode.product= productObj;
         */
@@ -41,8 +44,8 @@ public class Tree {
             root = newNode;
         }
         else{
-            Node current = root;
-            Node parent;
+            ProductNode current = root;
+            ProductNode parent;
             
             while (true){
                 parent = current;
@@ -65,8 +68,8 @@ public class Tree {
 
     }
     public boolean delete (int key){
-        Node current = root;
-        Node parent = root;
+        ProductNode current = root;
+        ProductNode parent = root;
         boolean isLeftChild = true;
 
         while (current.key != key){
@@ -124,7 +127,7 @@ public class Tree {
         
         }
         else {
-            Node successor = getSuccessor(current);
+            ProductNode successor = getSuccessor(current);
 
             if(current == root){
                 root = successor;
@@ -140,11 +143,11 @@ public class Tree {
         return true;
     }
 
-    private Node getSuccessor(Node deleteNode){
-        Node successorParent = deleteNode;
-        Node successor = deleteNode;
+    private ProductNode getSuccessor(ProductNode deleteNode){
+        ProductNode successorParent = deleteNode;
+        ProductNode successor = deleteNode;
 
-        Node current = deleteNode.rightChild;
+        ProductNode current = deleteNode.rightChild;
 
         while (current != null){
             successorParent = successor;
@@ -159,6 +162,49 @@ public class Tree {
         }
         return successor;
 
+    }
+    public void inorder() {
+        inorder(root);
+    }
+
+    private void inorder(ProductNode node) {
+        if (node != null) {
+            inorder(node.leftChild);
+
+            //System.out.println(node.key);
+            node.product.display();
+            System.out.println("---------");
+
+            inorder(node.rightChild);
+        }
+    }
+    public void preorder() {
+        preorder(root);
+    }
+
+    private void preorder(ProductNode node) {
+        if (node != null) {
+            //System.out.println(node.key);
+            node.product.display();
+            System.out.println("------------");
+
+            preorder(node.leftChild);
+
+            preorder(node.rightChild);
+        }
+    }
+    public void postorder() {
+        postorder(root);
+    }
+
+    private void postorder(ProductNode node) {
+        if (node != null) {
+            postorder(node.leftChild);
+            postorder(node.rightChild);
+            //System.out.println(node.key);
+            node.product.display();
+            System.out.println("-------------");
+        }
     }
     
 }
